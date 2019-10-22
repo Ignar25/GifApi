@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 const fetch = require("node-fetch");
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv");
 const logOut = require("../../utils/logOut");
 const logOk = require("../../utils/logOk");
+dotenv.config();
 
 const METHOD = { methor: "get" };
 const URL = process.env.API_URL + process.env.API_KEY;
