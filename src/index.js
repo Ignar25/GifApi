@@ -4,12 +4,13 @@ const app = express();
 const router = require('./application/routes/index');
 
 dotenv.config();
-PORT = process.env.PORT;
+
 
 app.use(express.json())
 
-app.listen(PORT, () =>{
-    console.log(`APP listening in ${PORT}`)
+/* eslint-disable no-undef */
+app.listen(process.env.PORT, () =>{
+    console.log(`APP listening in ${process.env.PORT}`)
 })
 
 app.use(router)
