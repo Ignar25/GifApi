@@ -52,21 +52,25 @@ let gifController = {
 
     const data = await getUrl(URL, METHOD);
 
-
+    let arrayGif = [];
     for (let index = 0; index < data.data.length; index++) {
       try {
         let gifSource = { source: data.data[index].source };
         let gif = { gif: data.data[index].images.original.url };
-        let GIF = { ...gifSource, ...gif };
-
-        res.write(JSON.stringify(GIF));
-        logOk.info(` -Search Data OK!`);
+        let GIF = {
+          gifSource: gifSource.source,
+          gif: gif.gif
+        };
+        arrayGif = [...arrayGif, GIF];
       } catch (error) {
         console.error(`Error: ${error}`);
-        logOut.info(` -Search Data ERROR ${error}`)
+        logOut.info(` -Search Data ERROR ${error}`);
       }
     }
-    res.end();
+    res.json({
+      arrayGif
+    });
+    logOk.info(` -Search Data OK!`);
   }
 };
 
